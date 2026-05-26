@@ -89,8 +89,9 @@ a {
 }
 
 .profile-photo {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
   border-radius: 24px;
   object-fit: cover;
   border: 4px solid rgba(255, 255, 255, 0.06);
@@ -231,21 +232,7 @@ a {
   text-shadow: 0 0 10px rgba(92, 106, 196, 0.6);
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding: 6rem 0 3rem 0;
-  }
-
-  .profile-photo {
-    width: 280px;
-    height: 280px;
-    object-position: 100% 0%;
-  }
-
-  .hero-card {
-    padding: 1.5rem;
-  }
-}
+/* Mobile adjustments handled in media queries section below */
 
 /* ===== FOOTER STYLING ===== */
 .main-footer {
@@ -302,12 +289,130 @@ a {
   border-color: rgba(92, 106, 196, 0.3);
 }
 
-@media (max-width: 768px) {
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* Tablets and Mobile (under 992px) */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .navbar-nav {
+    align-items: center;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+    text-align: center;
+    margin: 0.4rem 0;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.6rem 1.2rem !important;
+    display: inline-block;
+  }
+
+  .navbar-brand {
+    font-size: 1.15rem;
+  }
+
+  .hero {
+    padding: 7rem 0 3.5rem 0;
+  }
+
+  .hero-card {
+    padding: 2rem;
+  }
+
+  .profile-photo {
+    max-width: 280px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Section paddings and spacing */
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* Experience & Education badges */
+  .project-card .badge {
+    white-space: normal !important;
+    display: inline-block;
+    font-size: 0.85rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+}
+
+/* Mobile Devices (under 768px) */
+@media (max-width: 767.98px) {
+  .floating-resume {
+    display: none;
+  }
+
   .footer-social {
     margin-top: 1.5rem;
   }
 
   .footer-links {
     margin-top: 1.5rem;
+  }
+
+  .hero {
+    padding: 6.5rem 0 3rem 0;
+  }
+
+  .hero-card {
+    padding: 1.5rem;
+  }
+
+  .profile-photo {
+    max-width: 240px;
+  }
+}
+
+/* Extra Small Devices (under 576px) */
+@media (max-width: 575.98px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-contact a {
+    font-size: 15px !important;
+    word-break: break-all;
+  }
+
+  .profile-photo {
+    max-width: 200px;
+  }
+
+  .service {
+    padding: 20px 10px;
+  }
+
+  .service i {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .service h5 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .service p {
+    font-size: 0.8rem;
+    line-height: 1.5;
   }
 }
