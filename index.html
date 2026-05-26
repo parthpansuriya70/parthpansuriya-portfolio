@@ -393,37 +393,41 @@
 
   <!-- Languages -->
   <section id="Languages" class="py-5 mt-4">
-    <div class="col-md-8 col-lg-6 m-auto container-xl text-center">
-      <h2 class="display-6 fw-bold mb-5">Languages<span class="gradient-text">.</span></h2>
-      <div class="p-3 p-sm-4 p-md-5 project-card text-start shadow-lg" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="container-xl">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 text-center">
+          <h2 class="display-6 fw-bold mb-5">Languages<span class="gradient-text">.</span></h2>
+          <div class="p-4 p-md-5 project-card text-start shadow-lg" data-aos="zoom-in" data-aos-duration="1000">
 
-        <div class="mb-4">
-          <div class="d-flex justify-content-between align-items-end mb-2">
-            <span class="text-white fs-5"><i class="fa-solid fa-language me-2 text-primary"></i>English</span>
-            <span class="gradient-text fw-bold">30%</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 30%"></div>
-          </div>
-        </div>
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-end mb-2">
+                <span class="text-white fs-6 fs-sm-5"><i class="fa-solid fa-language me-2 text-primary"></i>English</span>
+                <span class="gradient-text fw-bold">30%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-primary" style="width: 30%"></div>
+              </div>
+            </div>
 
-        <div class="mb-4">
-          <div class="d-flex justify-content-between align-items-end mb-2">
-            <span class="text-white fs-5"><i class="fa-solid fa-language me-2 text-success"></i>Hindi</span>
-            <span class="gradient-text fw-bold">50%</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar bg-success" style="width: 50%"></div>
-          </div>
-        </div>
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-end mb-2">
+                <span class="text-white fs-6 fs-sm-5"><i class="fa-solid fa-language me-2 text-success"></i>Hindi</span>
+                <span class="gradient-text fw-bold">50%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-success" style="width: 50%"></div>
+              </div>
+            </div>
 
-        <div class="mb-0">
-          <div class="d-flex justify-content-between align-items-end mb-2">
-            <span class="text-white fs-5"><i class="fa-solid fa-language me-2 text-warning"></i>Gujarati</span>
-            <span class="gradient-text fw-bold">100%</span>
-          </div>
-          <div class="progress">
-            <div class="progress-bar bg-warning" style="width: 100%"></div>
+            <div class="mb-0">
+              <div class="d-flex justify-content-between align-items-end mb-2">
+                <span class="text-white fs-6 fs-sm-5"><i class="fa-solid fa-language me-2 text-warning"></i>Gujarati</span>
+                <span class="gradient-text fw-bold">100%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-warning" style="width: 100%"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -436,17 +440,23 @@
       <h2 class="display-6 fw-bold mb-5 text-center">Hobbies & Interests<span class="gradient-text">.</span></h2>
       <div class="row g-4 text-center justify-content-center">
         <div class="col-6 col-md-3" data-aos="zoom-out-up" data-aos-duration="800">
-          <div class="project-card p-4 fs-4 text-white">🏏 Cricket</div>
+          <div class="project-card p-3 p-md-4 fs-5 fs-md-4 text-white d-flex align-items-center justify-content-center gap-2">
+            🏏 Cricket
+          </div>
         </div>
         <div class="col-6 col-md-3" data-aos="zoom-out-up" data-aos-duration="800" data-aos-delay="100">
-          <div class="project-card p-4 fs-4 text-white">🎮 Gaming</div>
+          <div class="project-card p-3 p-md-4 fs-5 fs-md-4 text-white d-flex align-items-center justify-content-center gap-2">
+            🎮 Gaming
+          </div>
         </div>
         <div class="col-6 col-md-3" data-aos="zoom-out-up" data-aos-duration="800" data-aos-delay="200">
-          <div class="project-card p-4 fs-4 text-white">🎧 Music</div>
+          <div class="project-card p-3 p-md-4 fs-5 fs-md-4 text-white d-flex align-items-center justify-content-center gap-2">
+            🎧 Music
+          </div>
         </div>
         <div class="col-6 col-md-3" data-aos="zoom-out-up" data-aos-duration="800" data-aos-delay="300">
-          <div class="project-card p-4 fs-4 text-white d-flex align-items-center justify-content-center gap-2">
-            <img width="30" height="30" src="./assets/icons8-carrom-25.png" alt="Carrom" style="object-fit: contain;" />
+          <div class="project-card p-3 p-md-4 fs-5 fs-md-4 text-white d-flex align-items-center justify-content-center gap-2">
+            <img width="24" height="24" src="./assets/icons8-carrom-25.png" alt="Carrom" style="object-fit: contain;" />
             Carrom
           </div>
         </div>
@@ -617,6 +627,20 @@
       } else {
         nav.classList.remove('shadow-lg');
       }
+    });
+
+    // Close navbar on click for mobile responsiveness
+    const navLinks = document.querySelectorAll('.nav-item .nav-link');
+    const menuToggle = document.getElementById('navmenu');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (menuToggle.classList.contains('show')) {
+          const bsCollapse = new bootstrap.Collapse(menuToggle, {
+            toggle: false
+          });
+          bsCollapse.hide();
+        }
+      });
     });
   </script>
 </body>
