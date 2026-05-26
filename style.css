@@ -4,8 +4,11 @@
   --glass: rgba(255, 255, 255, 0.06);
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 body {
@@ -19,7 +22,6 @@ body {
     Arial;
   background: linear-gradient(135deg, #0f172a 0%, #071033 100%);
   color: #e6eef8;
-  overflow-x: hidden;
 }
 
 a {
@@ -59,6 +61,20 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Typed Cursor Blink Animation */
+.typed-cursor {
+  font-weight: 100;
+  font-size: 1.1em;
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .hero {

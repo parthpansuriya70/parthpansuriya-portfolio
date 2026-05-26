@@ -23,10 +23,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav py-3" data-aos="fade-down"
     data-aos-duration="1000">
     <div class="container-xl">
-      <a href="#">
-        <img src="./assets/Parth Pansuriya logo.png" alt="logo" style="height: 50px;width: 50px;" class="me-2">
-      </a>
-      <a class="navbar-brand fw-bold p-1" href="#">Parth Pansuriya<span style="color: var(--accent)">.</span></a>
+      <div class="d-flex align-items-center">
+        <a href="#">
+          <img src="./assets/Parth Pansuriya logo.png" alt="logo" style="height: 50px;width: 50px;" class="me-2">
+        </a>
+        <a class="navbar-brand fw-bold p-1" href="#">Parth Pansuriya<span style="color: var(--accent)">.</span></a>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -66,8 +68,9 @@
         <img src="./assets/Parth 1.png" alt="Profile" class="profile-photo shadow-lg mx-auto mb-4 mb-lg-0" />
         <div class="flex-grow-1 text-center text-lg-start" data-aos="fade-left" data-aos-delay="200"
           data-aos-duration="1200">
-          <h1 class="display-4 fw-bolder mb-2">Hi, I’m <span class="gradient-text">Parth Pansuriya</span> <br />Web
-            Designer</h1>
+          <h1 class="display-4 fw-bolder mb-2">Hi, I’m <span class="gradient-text">Parth Pansuriya</span> <br />
+            <span id="typed-text" style="color: var(--accent);">Web Designer</span><span class="typed-cursor">|</span>
+          </h1>
           <p class="lead mb-4" style="color: var(--muted); font-size: 1.15rem;">
             I design and build beautiful, accessible, and responsive websites
             that help businesses convert. Specialised in UI, interaction
@@ -641,6 +644,44 @@
           bsCollapse.hide();
         }
       });
+    });
+
+    // Typing Effect
+    const typedTextSpan = document.getElementById("typed-text");
+    const textArray = ["Web Designer", "UI/UX Designer", "Frontend Developer"];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 2000;
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        setTimeout(erase, newTextDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        textArrayIndex++;
+        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+        setTimeout(type, typingDelay + 1100);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      if (textArray.length) {
+        typedTextSpan.textContent = "";
+        setTimeout(type, newTextDelay + 250);
+      }
     });
   </script>
 </body>
