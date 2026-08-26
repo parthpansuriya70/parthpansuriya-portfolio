@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parthpansuriya-portfolio.vercel.app/sitemap.xml
