@@ -29,13 +29,20 @@ html {
   scroll-padding-top: 80px;
   overflow-x: hidden;
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
+  font-size: 16px;
 }
 
 body {
   overflow-x: hidden;
   width: 100%;
+  max-width: 100vw;
+}
+
+img,
+video {
   max-width: 100%;
+  height: auto;
 }
 
 /* Custom Scrollbar */
@@ -854,6 +861,58 @@ a {
   }
 }
 
+/* Base font scaling for ultra-large screens */
+@media (min-width: 1440px) {
+  html {
+    font-size: 18px;
+  }
+  .container-xl {
+    max-width: 1320px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 22px;
+  }
+  .container-xl,
+  .container-xxl {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 28px;
+  }
+  .container-xl,
+  .container-xxl {
+    max-width: 2000px;
+  }
+  .hero {
+    padding: 10rem 0 5rem 0;
+  }
+  .project-thumb {
+    height: 350px;
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 40px;
+  }
+  .container-xl,
+  .container-xxl {
+    max-width: 3000px;
+  }
+  .hero {
+    padding: 15rem 0 8rem 0;
+  }
+  .project-thumb {
+    height: 500px;
+  }
+}
+
 /* Mobile Devices (under 768px) */
 @media (max-width: 767.98px) {
   .floating-whatsapp {
@@ -914,5 +973,50 @@ a {
   .service p {
     font-size: 0.8rem;
     line-height: 1.5;
+  }
+}
+
+/* Micro-adjustments for very small phones (e.g. iPhone SE, old Androids) */
+@media (max-width: 414px) {
+  html {
+    font-size: 15px;
+  }
+  .hero-card {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 14px;
+  }
+  .hero-card {
+    padding: 1rem;
+    gap: 1.5rem !important;
+  }
+  .display-4 {
+    font-size: 2.2rem;
+  }
+  .display-6 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 13px;
+  }
+  .hero-card {
+    padding: 0.8rem;
+  }
+  .timeline-card {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  .timeline-logo {
+    margin: 0 auto;
+  }
+  .service {
+    padding: 15px 5px;
   }
 }
