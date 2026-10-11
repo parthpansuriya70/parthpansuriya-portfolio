@@ -78,6 +78,25 @@ h6,
   letter-spacing: -0.02em;
 }
 
+h1, .display-4 {
+  font-size: clamp(1.85rem, 5vw + 0.5rem, 3.4rem);
+  line-height: 1.2;
+}
+
+h2, .display-5 {
+  font-size: clamp(1.6rem, 4vw + 0.4rem, 2.75rem);
+  line-height: 1.25;
+}
+
+.display-6 {
+  font-size: clamp(1.4rem, 3vw + 0.3rem, 2.2rem);
+  line-height: 1.3;
+}
+
+.lead {
+  font-size: clamp(1rem, 2vw + 0.4rem, 1.2rem) !important;
+}
+
 a {
   color: var(--accent);
   transition: all 0.3s ease;
@@ -558,6 +577,14 @@ textarea:focus-visible,
   animation: float 4s ease-in-out infinite;
 }
 
+.floating-whatsapp a {
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-color: #25D366;
+  margin-bottom: -10px;
+}
+
 .scroll-top-btn {
   position: fixed;
   right: 27px; /* Center aligned with the 60px WhatsApp button (20px + (60px-45px)/2) */
@@ -782,13 +809,45 @@ textarea:focus-visible,
   border-color: rgba(99, 102, 241, 0.25);
 }
 
-/* ===== RESPONSIVE MEDIA QUERIES ===== */
+/* ===== COMPREHENSIVE RESPONSIVE DESIGN (320px to Ultrawide) ===== */
+
+/* Large Desktops & Ultrawide (1440px and above) */
+@media (min-width: 1440px) {
+  .container-xl {
+    max-width: 1320px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container-xl,
+  .container-xxl {
+    max-width: 1560px;
+  }
+  .hero-card {
+    padding: 4.5rem 4rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container-xl,
+  .container-xxl {
+    max-width: 1800px;
+  }
+  .hero {
+    padding: 8rem 0 4rem 0;
+  }
+  .project-thumb {
+    height: 280px;
+  }
+}
 
 /* Tablets and Mobile (under 992px) */
 @media (max-width: 991.98px) {
   .navbar-toggler {
-    border: none !important;
-    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding: 0.35rem 0.65rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .navbar-toggler:focus {
@@ -801,14 +860,14 @@ textarea:focus-visible,
   }
 
   .navbar-collapse {
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    margin-top: 1rem;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-top: 0.75rem;
     padding: 1.25rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
   }
 
   .navbar-nav {
@@ -818,148 +877,181 @@ textarea:focus-visible,
   .navbar-nav .nav-item {
     width: 100%;
     text-align: center;
-    margin: 0.4rem 0;
+    margin: 0.35rem 0;
   }
 
   .navbar-nav .nav-link {
     padding: 0.6rem 1.2rem !important;
     display: inline-block;
+    font-size: 1.05rem;
   }
 
-  .navbar-brand {
-    font-size: 1.15rem;
-  }
-
-  .nav-logo {
-    height: 38px;
-    width: 38px;
+  .navbar-nav .btn {
+    width: 100%;
+    max-width: 260px;
+    display: inline-block;
+    margin-top: 0.5rem;
   }
 
   .nav-brand-wrapper {
-    max-width: 70vw;
+    max-width: calc(100% - 65px);
+    min-width: 0;
   }
 
   .hero {
-    padding: 7rem 0 3.5rem 0;
+    padding: 6.5rem 0 3rem 0;
   }
 
   .hero-card {
-    padding: 2rem;
+    padding: 2.5rem 1.75rem;
+    gap: 2rem !important;
   }
 
   .profile-photo {
-    max-width: 280px;
+    max-width: 260px;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  /* Section paddings and spacing */
+  /* Section spacing */
   section {
     padding-top: 3.5rem !important;
     padding-bottom: 3.5rem !important;
-    margin-top: 2rem !important;
-  }
-
-  /* Experience & Education badges */
-  .project-card .badge {
-    white-space: normal !important;
-    display: inline-block;
-    font-size: 0.85rem !important;
-    padding: 0.4rem 0.8rem !important;
-  }
-}
-
-/* Base font scaling for ultra-large screens */
-@media (min-width: 1440px) {
-  html {
-    font-size: 18px;
-  }
-  .container-xl {
-    max-width: 1320px;
-  }
-}
-
-@media (min-width: 1920px) {
-  html {
-    font-size: 22px;
-  }
-  .container-xl,
-  .container-xxl {
-    max-width: 1600px;
-  }
-}
-
-@media (min-width: 2560px) {
-  html {
-    font-size: 28px;
-  }
-  .container-xl,
-  .container-xxl {
-    max-width: 2000px;
-  }
-  .hero {
-    padding: 10rem 0 5rem 0;
-  }
-  .project-thumb {
-    height: 350px;
-  }
-}
-
-@media (min-width: 3840px) {
-  html {
-    font-size: 40px;
-  }
-  .container-xl,
-  .container-xxl {
-    max-width: 3000px;
-  }
-  .hero {
-    padding: 15rem 0 8rem 0;
-  }
-  .project-thumb {
-    height: 500px;
+    margin-top: 1.5rem !important;
   }
 }
 
 /* Mobile Devices (under 768px) */
 @media (max-width: 767.98px) {
   .floating-whatsapp {
-    transform: scale(0.85);
-    transform-origin: bottom right;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .floating-whatsapp a {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .floating-whatsapp i {
+    font-size: 1.6rem !important;
+  }
+
+  .scroll-top-btn {
+    right: 20px;
+    bottom: 80px;
+    width: 44px;
+    height: 44px;
   }
 
   .footer-social {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   .footer-links {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
+    justify-content: center !important;
   }
 
   .hero {
-    padding: 3rem 0 3rem 0;
+    padding: 5rem 0 2rem 0;
   }
 
   .hero-card {
-    padding: 1.5rem;
+    padding: 1.75rem 1.25rem;
+    gap: 1.5rem !important;
   }
 
   .profile-photo {
-    max-width: 240px;
+    max-width: 220px;
+  }
+
+  /* Timeline adjustment for mobile */
+  .timeline {
+    padding: 1rem 0;
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .timeline-item {
+    padding-left: 36px;
+    margin-bottom: 2.25rem;
+  }
+
+  .timeline-dot {
+    left: 5px;
+    top: 24px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-card {
+    padding: 1.25rem 1rem !important;
+    gap: 1rem !important;
+    flex-direction: column !important;
+    text-align: left !important;
+  }
+
+  .timeline-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .cta-banner .d-flex.flex-wrap {
+    flex-direction: column;
+    gap: 0.75rem !important;
+  }
+
+  .cta-banner .btn {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  /* Contact section */
+  #contactForm {
+    padding: 1.5rem 1.25rem !important;
   }
 }
 
-/* Extra Small Devices (under 576px) */
+/* Small to Standard Mobile Phones (under 576px) */
 @media (max-width: 575.98px) {
+  .hero-card {
+    padding: 1.5rem 1rem;
+  }
+
   .hero h1 {
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  .hero h1 .gradient-text {
+    display: inline;
+    white-space: normal;
   }
 
   .hero-contact a {
-    font-size: 15px !important;
+    font-size: 0.95rem !important;
     word-break: break-all;
+  }
+
+  .hero .d-flex.gap-3.flex-wrap {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem !important;
+  }
+
+  .hero .d-flex.gap-3.flex-wrap .btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
   }
 
   .profile-photo {
@@ -967,7 +1059,7 @@ textarea:focus-visible,
   }
 
   .service {
-    padding: 20px 10px;
+    padding: 1.5rem 1rem;
   }
 
   .service i {
@@ -975,61 +1067,115 @@ textarea:focus-visible,
     margin-bottom: 0.75rem !important;
   }
 
-  .service h5 {
-    font-size: 0.95rem;
+  .service h3 {
+    font-size: 1.1rem;
     margin-bottom: 0.5rem !important;
   }
 
   .service p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .direct-answer-box {
+    padding: 1.15rem 1rem !important;
+  }
+
+  .direct-answer-box p {
+    font-size: 0.95rem !important;
+    line-height: 1.65;
+  }
+
+  .faq-accordion .accordion-button {
+    font-size: 1rem;
+    padding: 1rem 1.15rem;
+  }
+
+  .faq-accordion .accordion-body {
+    font-size: 0.92rem;
+    padding: 1rem 1.15rem;
+    line-height: 1.65;
+  }
+
+  .skill-chip {
     font-size: 0.8rem;
-    line-height: 1.5;
+    padding: 0.35rem 0.75rem;
+    margin: 0.2rem 0.2rem 0 0;
+  }
+
+  .hobby-chip {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+    gap: 6px;
+  }
+
+  #contactForm .btn {
+    width: 100%;
+  }
+
+  .project-card .p-4 {
+    padding: 1.25rem !important;
   }
 }
 
-/* Micro-adjustments for very small phones (e.g. iPhone SE, old Androids) */
-@media (max-width: 414px) {
-  html {
-    font-size: 15px;
-  }
+/* Very Small Mobile Phones (under 376px down to 320px) */
+@media (max-width: 375.98px) {
   .hero-card {
-    padding: 1.2rem;
+    padding: 1.25rem 0.75rem;
+    gap: 1.25rem !important;
   }
-}
 
-@media (max-width: 375px) {
-  html {
-    font-size: 14px;
+  .hero h1 {
+    font-size: 1.5rem;
+    line-height: 1.25;
   }
-  .hero-card {
-    padding: 1rem;
-    gap: 1.5rem !important;
-  }
-  .display-4 {
-    font-size: 2.2rem;
-  }
-  .display-6 {
-    font-size: 1.8rem;
-  }
-}
 
-@media (max-width: 320px) {
-  html {
-    font-size: 13px;
+  .profile-photo {
+    max-width: 170px;
   }
-  .hero-card {
-    padding: 0.8rem;
+
+  .nav-brand-wrapper {
+    max-width: calc(100% - 55px);
   }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .nav-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .timeline-item {
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-dot {
+    left: 2px;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+  }
+
   .timeline-card {
-    flex-direction: column !important;
-    text-align: center !important;
+    padding: 1rem 0.75rem !important;
   }
-  .timeline-logo {
-    margin: 0 auto;
+
+  .hobby-chip {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.85rem;
   }
-  .service {
-    padding: 15px 5px;
+
+  #contactForm {
+    padding: 1rem 0.75rem !important;
   }
 }
+
 
 /* =========================================================
    AEO / GEO Direct Answer Block, FAQs & CTA Banner
