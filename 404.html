@@ -6,6 +6,8 @@
   <title>Page Not Found | Parth Pansuriya</title>
   <meta name="description" content="The page you are looking for does not exist." />
   <meta name="robots" content="noindex, follow" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <link rel="shortcut icon" href="./assets/Parth Pansuriya logo.png" type="image/x-icon">
   
   <style>
@@ -55,6 +57,11 @@
     }
     a:hover {
       opacity: 0.9;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.4);
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">

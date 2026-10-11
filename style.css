@@ -83,6 +83,18 @@ a {
   transition: all 0.3s ease;
 }
 
+/* Accessible Keyboard Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible,
+.navbar-toggler:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.4) !important;
+}
+
 /* Animated Mesh Background */
 .mesh-bg-container {
   position: fixed;
@@ -1017,4 +1029,130 @@ a {
   .service {
     padding: 15px 5px;
   }
+}
+
+/* =========================================================
+   AEO / GEO Direct Answer Block, FAQs & CTA Banner
+   ========================================================= */
+
+/* Direct Answer Box */
+.direct-answer-box {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 100%
+  );
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-left: 5px solid var(--accent);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+}
+
+.direct-answer-box p {
+  color: #e2e8f0;
+}
+
+/* FAQ Accordion */
+.faq-accordion .accordion-item {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  border: 1px solid var(--glass-border);
+  border-radius: 16px !important;
+  margin-bottom: 1.1rem;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.faq-accordion .accordion-item:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.faq-accordion .accordion-button {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-headings);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: none;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+  background: rgba(99, 102, 241, 0.12);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.faq-accordion .accordion-button:focus {
+  box-shadow: none;
+}
+
+.faq-accordion .accordion-button::after {
+  filter: invert(1) brightness(1.5);
+  transition: transform 0.3s ease;
+}
+
+.faq-accordion .accordion-body {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* CTA Banner Section */
+.cta-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15) 0%,
+    rgba(139, 92, 246, 0.12) 50%,
+    rgba(6, 182, 212, 0.08) 100%
+  );
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.15) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Layout Stability & Aspect Ratio */
+.nav-logo {
+  aspect-ratio: 1 / 1;
+}
+
+.profile-photo {
+  aspect-ratio: 896 / 1152;
+}
+
+.timeline-logo {
+  aspect-ratio: 1 / 1;
+}
+
+.project-thumb {
+  aspect-ratio: 16 / 9;
 }
