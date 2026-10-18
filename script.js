@@ -50,29 +50,59 @@ document.addEventListener("DOMContentLoaded", function () {
     return div.innerHTML;
   }
 
-  // Glass Navbar & Scroll-to-Top Button on Scroll
+  // Glass Navbar, Scroll-to-Top Button & Dynamic Scroll Progress Indicator
   const nav = document.querySelector(".navbar");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const scrollProgressBar = document.getElementById("scrollProgressBar");
 
+  function onScrollUpdate() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+    // Dynamic Scroll Progress Line (0% to 100%)
+    if (scrollProgressBar) {
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? Math.min(Math.max(scrollY / scrollHeight, 0), 1) : 0;
+      scrollProgressBar.style.transform = `scaleX(${progress})`;
+    }
+
+    // Glass Navbar shadow
+    if (nav) {
+      if (scrollY > 50) {
+        nav.classList.add("shadow-lg");
+      } else {
+        nav.classList.remove("shadow-lg");
+      }
+    }
+
+    // Scroll to Top Button
+    if (scrollTopBtn) {
+      if (scrollY > 300) {
+        scrollTopBtn.classList.add("show");
+      } else {
+        scrollTopBtn.classList.remove("show");
+      }
+    }
+  }
+
+  let isScrolling = false;
   window.addEventListener(
     "scroll",
     () => {
-      if (window.scrollY > 50) {
-        if (nav) nav.classList.add("shadow-lg");
-      } else {
-        if (nav) nav.classList.remove("shadow-lg");
-      }
-
-      if (scrollTopBtn) {
-        if (window.scrollY > 300) {
-          scrollTopBtn.classList.add("show");
-        } else {
-          scrollTopBtn.classList.remove("show");
-        }
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          onScrollUpdate();
+          isScrolling = false;
+        });
+        isScrolling = true;
       }
     },
     { passive: true }
   );
+
+  window.addEventListener("resize", onScrollUpdate, { passive: true });
+
+  // Initial calculation on page load
+  onScrollUpdate();
 
   // Close Navbar on Click (Mobile Devices)
   const navLinks = document.querySelectorAll(".nav-item .nav-link");
@@ -92,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Typing Animation Effect
   const typedTextSpan = document.getElementById("typed-text");
   if (typedTextSpan) {
-    const textArray = ["SEO & Digital Marketing", "Responsive Web Design", "UI/UX & Optimization"];
+    const textArray = ["SEO & Digital Marketing", "Web Designer"];
     const typingDelay = 100;
     const erasingDelay = 50;
     const newTextDelay = 2000;

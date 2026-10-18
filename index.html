@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -168,12 +168,15 @@
 </head>
 
 <body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
   <!-- Animated Background Mesh Blobs -->
-  <div class="mesh-bg-container" aria-hidden="true">
+  <!-- <div class="mesh-bg-container" aria-hidden="true">
     <div class="mesh-blob blob-1"></div>
     <div class="mesh-blob blob-2"></div>
     <div class="mesh-blob blob-3"></div>
-  </div>
+  </div> -->
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav py-3" data-aos="fade-down" data-aos-duration="1000">
@@ -835,23 +838,25 @@
   <!-- FOOTER -->
   <footer class="main-footer pt-5 pb-4 mt-5">
     <div class="container-xl">
-      <div class="row gy-4 gy-md-5 align-items-center justify-content-between">
+      <div class="footer-grid">
 
-        <!-- Brand -->
-        <div class="col-12 col-md-5 text-center text-md-start" data-aos="fade-right" data-aos-duration="1000">
-          <h4 class="fw-bolder mb-3 text-white d-flex align-items-center justify-content-center justify-content-md-start">
+        <!-- Column 1: Logo, Name & Tagline (~40%) -->
+        <div class="footer-col-brand" data-aos="fade-right" data-aos-duration="1000">
+          <h4 class="fw-bolder mb-1 text-white d-flex align-items-center justify-content-center justify-content-lg-start footer-brand-title">
             <img src="./assets/Parth Pansuriya logo.png" alt="Parth Pansuriya brand monogram in footer" width="40" height="40"
-              style="height: 40px; width: 40px; object-fit: contain; flex-shrink: 0;" class="me-2 img-fluid" loading="lazy" />
+              class="me-2 img-fluid footer-brand-logo" loading="lazy" />
             Parth Pansuriya<span class="gradient-text">.</span>
           </h4>
-          <p class="mb-0" style="font-size: 1.05rem; color: var(--muted);">
-            SEO & Digital Marketing Specialist helping businesses build search visibility and convert customers.
+          <p class="footer-tagline mb-0">
+            <span>SEO & Digital Marketing Specialist</span><br />
+            <span>Designed to Impress. Optimized to Rank.</span>
           </p>
         </div>
 
-        <!-- Quick Links -->
-        <div class="col-12 col-md-4 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
-          <div class="footer-links d-flex flex-wrap justify-content-center gap-3 gap-md-4">
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col-links" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+          <h4 class="footer-links-heading">Quick Links<span class="gradient-text">.</span></h4>
+          <nav class="footer-links" aria-label="Footer Quick Links">
             <a href="#about" class="text-decoration-none">About</a>
             <a href="#skills" class="text-decoration-none">Skills</a>
             <a href="#experience" class="text-decoration-none">Experience</a>
@@ -859,12 +864,12 @@
             <a href="#services" class="text-decoration-none">Services</a>
             <a href="#faq" class="text-decoration-none">FAQs</a>
             <a href="#contact" class="text-decoration-none">Contact</a>
-          </div>
+          </nav>
         </div>
 
-        <!-- Social Icons -->
-        <div class="col-12 col-md-3 text-center text-md-end" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-          <div class="footer-social d-flex justify-content-center justify-content-md-end gap-3">
+        <!-- Column 3: Social Media (~20%) -->
+        <div class="footer-col-social" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+          <div class="footer-social d-flex justify-content-center justify-content-lg-end gap-3">
             <a href="https://www.linkedin.com/in/parthspansuriya" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="LinkedIn Profile" title="LinkedIn Profile">
               <i class="fa-brands fa-linkedin fs-4" aria-hidden="true"></i>
             </a>
@@ -876,13 +881,14 @@
             </a>
           </div>
         </div>
+
       </div>
 
-      <hr class="footer-line mt-5 mb-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200" />
+      <hr class="footer-line mt-4 mb-3" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200" />
 
       <!-- Bottom -->
       <div class="text-center">
-        <p class="mb-0" style="font-size: 0.85rem; color: var(--muted);">
+        <p class="mb-0 footer-copyright">
           &copy; <span id="year"></span> Designed & Built by <span class="fw-bold gradient-text">Parth Pansuriya</span>
         </p>
       </div>
