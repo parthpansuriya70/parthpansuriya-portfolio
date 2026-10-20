@@ -120,6 +120,37 @@ textarea:focus-visible,
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.4) !important;
 }
 
+/* Accessibility: Skip to Main Content Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--bg-primary);
+  color: #ffffff !important;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  z-index: 99999;
+  transition: top 0.2s ease-in-out;
+  box-shadow: var(--shadow-md);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 20px;
+  outline: 2px solid var(--accent-light) !important;
+  outline-offset: 2px !important;
+  box-shadow: var(--glow-accent) !important;
+}
+
+#main-content:focus {
+  outline: none;
+}
+
 /* Animated Mesh Background */
 .mesh-bg-container {
   position: fixed;
@@ -842,6 +873,9 @@ textarea:focus-visible,
 }
 
 .footer-brand-title {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 0.35rem !important;
   line-height: 1.2;
 }

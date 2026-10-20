@@ -172,6 +172,9 @@
 </head>
 
 <body>
+  <!-- Accessible Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
@@ -230,7 +233,9 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- MAIN CONTENT LANDMARK -->
+  <main id="main-content" tabindex="-1">
+    <!-- HERO -->
   <header class="hero" id="home">
     <div class="container-xxl mt-5 mt-lg-4">
       <div class="hero-card d-flex gap-5 align-items-center flex-column flex-lg-row">
@@ -844,6 +849,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="main-footer pt-5 pb-4 mt-5">
@@ -852,14 +858,14 @@
 
         <!-- Column 1: Logo, Name & Tagline (~40%) -->
         <div class="footer-col-brand" data-aos="fade-right" data-aos-duration="1000">
-          <h4 class="fw-bolder mb-1 text-white d-flex align-items-center justify-content-center justify-content-lg-start footer-brand-title">
+          <p class="h4 fw-bolder mb-1 text-white d-flex align-items-center justify-content-center justify-content-lg-start footer-brand-title">
             <picture style="display: contents;">
               <source srcset="./assets/Parth-Pansuriya-logo.webp" type="image/webp" />
               <img src="./assets/Parth Pansuriya logo.png" alt="Parth Pansuriya brand monogram in footer" width="40" height="40"
                 class="me-2 img-fluid footer-brand-logo" loading="lazy" title="Parth Pansuriya"/>
             </picture>
             Parth Pansuriya<span class="gradient-text">.</span>
-          </h4>
+          </p>
           <p class="footer-tagline mb-0">
             <span>SEO & Digital Marketing Specialist</span><br />
             <span>Designed to Impress. Optimized to Rank.</span>
@@ -868,7 +874,7 @@
 
         <!-- Column 2: Quick Links -->
         <div class="footer-col-links" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
-          <h4 class="footer-links-heading">Quick Links<span class="gradient-text">.</span></h4>
+          <p class="footer-links-heading">Quick Links<span class="gradient-text">.</span></p>
           <nav class="footer-links" aria-label="Footer Quick Links">
             <a href="#about" class="text-decoration-none">About</a>
             <a href="#skills" class="text-decoration-none">Skills</a>
