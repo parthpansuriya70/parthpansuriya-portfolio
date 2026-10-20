@@ -42,19 +42,23 @@
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
-  <!-- Bootstrap 5 CSS -->
+  <!-- Bootstrap 5 CSS (Critical layout framework) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
-  <!-- AOS (Animate On Scroll) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="shortcut icon" href="./assets/Parth Pansuriya logo.png" type="image/x-icon" />
+  <!-- Core Theme Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Non-critical Stylesheets (Deferred to prevent render blocking) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /></noscript>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" /></noscript>
+
+  <!-- Google Fonts (Optimized font weights with display=swap) -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="shortcut icon" href="./assets/Parth_Pansuriya_Favicon.png" type="image/x-icon" />
 
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -179,11 +183,14 @@
   </div> -->
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav py-3" data-aos="fade-down" data-aos-duration="1000">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav py-3">
     <div class="container-xl">
       <div class="d-flex align-items-center nav-brand-wrapper">
         <a href="#home" aria-label="Parth Pansuriya Home">
-          <img src="./assets/Parth Pansuriya logo.png" alt="Parth Pansuriya brand logo" width="50" height="50" class="nav-logo me-2 img-fluid" fetchpriority="high" />
+          <picture style="display: contents;">
+            <source srcset="./assets/Parth-Pansuriya-logo.webp" type="image/webp" />
+            <img src="./assets/Parth Pansuriya logo.png" alt="Parth Pansuriya brand logo" width="50" height="50" class="nav-logo me-2 img-fluid" fetchpriority="high" title="Parth Pansuriya"/>
+          </picture>
         </a>
         <a class="navbar-brand fw-bold p-1 m-0 text-truncate" href="#home">Parth Pansuriya<span style="color: var(--accent);">.</span></a>
       </div>
@@ -226,9 +233,12 @@
   <!-- HERO -->
   <header class="hero" id="home">
     <div class="container-xxl mt-5 mt-lg-4">
-      <div class="hero-card d-flex gap-5 align-items-center flex-column flex-lg-row" data-aos="fade-up" data-aos-duration="1200">
-        <img src="./assets/Parth 1.png" alt="Parth Pansuriya - SEO & Digital Marketing Expert" width="896" height="1152" class="profile-photo shadow-lg mx-auto mb-0 mb-lg-0 img-fluid" fetchpriority="high" />
-        <div class="flex-grow-1 text-center text-lg-start" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1200">
+      <div class="hero-card d-flex gap-5 align-items-center flex-column flex-lg-row">
+        <picture style="display: contents;">
+          <source type="image/webp" srcset="./assets/Parth-1-sm.webp 360w, ./assets/Parth-1.webp 640w" sizes="(max-width: 768px) 220px, 320px" />
+          <img src="./assets/Parth 1.png" alt="Parth Pansuriya - SEO & Digital Marketing Expert" width="896" height="1152" class="profile-photo shadow-lg mx-auto mb-0 mb-lg-0 img-fluid" fetchpriority="high" title="Parth Pansuriya" />
+        </picture>
+        <div class="flex-grow-1 text-center text-lg-start">
           <h1 class="display-4 fw-bolder mb-1">Hi, I'm <span class="gradient-text">Parth Pansuriya</span> <br />
             <span id="typed-text" style="color: var(--accent);">SEO & Digital Marketing</span><span class="typed-cursor" aria-hidden="true">|</span>
           </h1>
@@ -344,28 +354,28 @@
       <div class="row g-3 g-md-4 mt-2">
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="p-3 p-sm-4 project-card text-center h-100" data-aos="zoom-in" data-aos-duration="800">
-            <i class="bi bi-graph-up-arrow fs-1 text-primary mb-2 mb-sm-3" aria-hidden="true"></i>
+            <i class="fa-solid fa-chart-line fs-1 text-primary mb-2 mb-sm-3" aria-hidden="true"></i>
             <h3 class="text-white mb-2 mb-sm-3 fs-5">SEO & Strategy</h3>
             <p class="mb-0 small" style="color: var(--muted)">Technical SEO, On-Page SEO, Keyword Research, Content Strategy</p>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="p-3 p-sm-4 project-card text-center h-100" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-            <i class="bi bi-code-slash fs-1 text-info mb-2 mb-sm-3" aria-hidden="true"></i>
+            <i class="fa-solid fa-code fs-1 text-info mb-2 mb-sm-3" aria-hidden="true"></i>
             <h3 class="text-white mb-2 mb-sm-3 fs-5">Front-End Build</h3>
             <p class="mb-0 small" style="color: var(--muted)">HTML5, CSS3, JavaScript (ES6+), Bootstrap 5</p>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="p-3 p-sm-4 project-card text-center h-100" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
-            <i class="bi bi-palette-fill fs-1 text-warning mb-2 mb-sm-3" aria-hidden="true"></i>
+            <i class="fa-solid fa-palette fs-1 text-warning mb-2 mb-sm-3" aria-hidden="true"></i>
             <h3 class="text-white mb-2 mb-sm-3 fs-5">UI/UX Design</h3>
             <p class="mb-0 small" style="color: var(--muted)">Figma, Wireframing, Adobe Photoshop, Responsive Layouts</p>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="p-3 p-sm-4 project-card text-center h-100" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
-            <i class="bi bi-universal-access fs-1 text-success mb-2 mb-sm-3" aria-hidden="true"></i>
+            <i class="fa-solid fa-universal-access fs-1 text-success mb-2 mb-sm-3" aria-hidden="true"></i>
             <h3 class="text-white mb-2 mb-sm-3 fs-5">Accessibility</h3>
             <p class="mb-0 small" style="color: var(--muted)">WCAG 2.1 Basics, Semantic HTML, Keyboard Navigation, Speed</p>
           </div>
@@ -385,10 +395,10 @@
         <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-card project-card p-4 p-md-5 d-flex flex-column flex-sm-row gap-4 align-items-center align-items-sm-start text-center text-sm-start">
-            <img src="./assets/Company logo.png" alt="ExcelPTP IT internship training and placement solutions logo" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" />
+            <img src="./assets/Company logo.png" alt="ExcelPTP IT internship training and placement solutions logo" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" title="ExcelPTP - Professional Training Programs" />
             <div class="timeline-details">
               <h3 class="h4 mb-1 text-white">Web Designer Intern</h3>
-              <p class="fs-5 mb-2 gradient-text">ExcelPTP : IT Internship, Training & Placement Solutions</p>
+              <p class="fs-5 mb-2 gradient-text">ExcelPTP : Professional Training Programs</p>
               <span class="timeline-badge mb-3">July 2025 - January 2026</span>
               <ul class="list-unstyled mt-3 mb-0" style="color: var(--muted); font-size: 1.05rem; line-height: 1.7;">
                 <li>• Designed responsive web layouts and interactive landing pages for client projects.</li>
@@ -403,7 +413,7 @@
         <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-card project-card p-4 p-md-5 d-flex flex-column flex-sm-row gap-4 align-items-center align-items-sm-start text-center text-sm-start">
-            <img src="./assets/AmarInfotech-logo.png" alt="Amar InfoTech AI-driven software development company logo" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" />
+            <img src="./assets/AmarInfotech-logo.png" alt="Amar InfoTech AI-driven software development company logo" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" title="Amar InfoTech AI-driven software development company"/>
             <div class="timeline-details">
               <h3 class="h4 mb-1 text-white">Jr. SEO & Digital Marketing Executive</h3>
               <p class="fs-5 mb-2 gradient-text">Amar InfoTech - AI-Driven Software Development Company</p>
@@ -585,7 +595,7 @@
         <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-card project-card p-4 p-md-5 d-flex flex-column flex-sm-row gap-4 align-items-center align-items-sm-start text-center text-sm-start">
-            <img src="./assets/Uni logo.png" alt="Bhakta Kavi Narsinh Mehta University official emblem" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" />
+            <img src="./assets/Uni logo.png" alt="Bhakta Kavi Narsinh Mehta University official emblem" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" title="Bhakta Kavi Narsinh Mehta University"/>
             <div class="timeline-details">
               <h3 class="h4 text-white mb-2">Bachelor's in Computer Applications (BCA)</h3>
               <p class="fs-5 gradient-text mb-1">Bhakta Kavi Narsinh Mehta University</p>
@@ -598,7 +608,7 @@
         <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-card project-card p-4 p-md-5 d-flex flex-column flex-sm-row gap-4 align-items-center align-items-sm-start text-center text-sm-start">
-            <img src="./assets/Sch logo.png" alt="Shree A.G. Domadiya high school official emblem" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" />
+            <img src="./assets/Sch logo.png" alt="Shree A.G. Domadiya high school official emblem" width="70" height="70" class="timeline-logo img-fluid" loading="lazy" title="Shree A.G. Domadiya high school"/>
             <div class="timeline-details">
               <h3 class="h4 text-white mb-2">Higher Secondary (12th)</h3>
               <p class="fs-5 gradient-text mb-1">Shree A.G. Domadiya high school</p>
@@ -796,10 +806,10 @@
           </ul>
 
           <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-            <a class="btn btn-lg btn-outline-light px-4 rounded-pill shadow-sm" href="./Resume.pdf" download="Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-lg btn-outline-light px-4 rounded-pill shadow-sm" href="./Resume.pdf" download="Resume.pdf" target="_blank" rel="noopener noreferrer" title="Download Resume">
               <i class="fa-solid fa-file-arrow-down me-2" aria-hidden="true"></i>Download Resume
             </a>
-            <a class="btn btn-lg btn-outline-light px-4 rounded-pill shadow-sm" href="https://www.linkedin.com/in/parthspansuriya" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-lg btn-outline-light px-4 rounded-pill shadow-sm" href="https://www.linkedin.com/in/parthspansuriya" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
               <i class="fa-brands fa-linkedin me-2" aria-hidden="true"></i>LinkedIn
             </a>
           </div>
@@ -843,8 +853,11 @@
         <!-- Column 1: Logo, Name & Tagline (~40%) -->
         <div class="footer-col-brand" data-aos="fade-right" data-aos-duration="1000">
           <h4 class="fw-bolder mb-1 text-white d-flex align-items-center justify-content-center justify-content-lg-start footer-brand-title">
-            <img src="./assets/Parth Pansuriya logo.png" alt="Parth Pansuriya brand monogram in footer" width="40" height="40"
-              class="me-2 img-fluid footer-brand-logo" loading="lazy" />
+            <picture style="display: contents;">
+              <source srcset="./assets/Parth-Pansuriya-logo.webp" type="image/webp" />
+              <img src="./assets/Parth Pansuriya logo.png" alt="Parth Pansuriya brand monogram in footer" width="40" height="40"
+                class="me-2 img-fluid footer-brand-logo" loading="lazy" title="Parth Pansuriya"/>
+            </picture>
             Parth Pansuriya<span class="gradient-text">.</span>
           </h4>
           <p class="footer-tagline mb-0">
@@ -898,7 +911,7 @@
   <!-- Floating WhatsApp CTA -->
   <div class="floating-whatsapp">
     <a class="btn shadow-lg rounded-circle d-flex align-items-center justify-content-center text-white" href="https://wa.me/919104619800"
-      role="button" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp with Parth Pansuriya">
+      role="button" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp with Parth Pansuriya" title="Chat on WhatsApp with Parth Pansuriya">
       <i class="fa-brands fa-whatsapp fs-2" aria-hidden="true"></i>
     </a>
   </div>
