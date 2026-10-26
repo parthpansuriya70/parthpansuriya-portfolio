@@ -116,6 +116,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Layers */
+  --z-float: 15;
   --z-header: 20;
   --z-skip: 30;
 }
@@ -1211,7 +1212,7 @@ a:hover {
 
 /* ---------- Footer ---------- */
 .site-footer {
-  padding-block: var(--s-6);
+  padding-block: var(--s-6) var(--s-8);
   font-size: var(--text-sm);
 }
 
@@ -1241,6 +1242,58 @@ a:hover {
 
 .to-top:hover .arrow {
   transform: translateY(-3px);
+}
+
+/* ---------- WhatsApp button ---------- */
+.wa-float {
+  position: fixed;
+  right: max(var(--s-4), env(safe-area-inset-right));
+  bottom: max(var(--s-4), env(safe-area-inset-bottom));
+  z-index: var(--z-float);
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0 var(--s-4);
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+  box-shadow: var(--shadow);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform var(--dur-2) var(--ease),
+    background-color var(--dur-2) var(--ease);
+}
+
+.wa-float:hover {
+  background: var(--color-heading);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.wa-float:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.wa-float-icon {
+  flex: none;
+}
+
+/* Icon only on small screens; the accessible name is on the link itself */
+.wa-float-label {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .wa-float-label {
+    display: inline;
+  }
 }
 
 /* ---------- Motion ---------- */
@@ -1319,7 +1372,8 @@ a:hover {
 /* ---------- Print ---------- */
 @media print {
   .site-header,
-  .skip-link {
+  .skip-link,
+  .wa-float {
     display: none;
   }
 
