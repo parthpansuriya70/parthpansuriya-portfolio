@@ -108,8 +108,8 @@
     });
   }
 
-  // Skills marquee: clone the set until each half fills the row, then set a steady speed ---
-  var marquee = document.querySelector(".skills-marquee");
+  // Main-skills marquee under the hero: clone the set until each half fills the row ---
+  var marquee = document.querySelector(".strip-marquee");
   var marqueeToggle = document.querySelector(".marquee-toggle");
 
   function buildMarqueeRow(row, speed) {
@@ -119,7 +119,7 @@
       node.remove();
     });
     var width = set.getBoundingClientRect().width;
-    if (!width) return; // hidden (reduced motion or no JS layout)
+    if (!width) return; // hidden (reduced motion, or no JS)
     var copies = Math.max(1, Math.ceil(row.clientWidth / width));
     for (var i = 0; i < copies * 2 - 1; i++) {
       var clone = set.cloneNode(true);
@@ -130,12 +130,9 @@
   }
 
   if (marquee) {
-    var rows = Array.prototype.slice.call(marquee.querySelectorAll(".marquee-row"));
-    var speeds = [55, 45];
+    var marqueeRow = marquee.querySelector(".marquee-row");
     var rebuild = function () {
-      rows.forEach(function (row, index) {
-        buildMarqueeRow(row, speeds[index] || 50);
-      });
+      buildMarqueeRow(marqueeRow, 60);
     };
     if ("ResizeObserver" in window) {
       new ResizeObserver(rebuild).observe(marquee);
@@ -147,7 +144,8 @@
     if (marqueeToggle) {
       marqueeToggle.addEventListener("click", function () {
         var paused = marquee.classList.toggle("is-paused");
-        marqueeToggle.textContent = paused ? "Play animation" : "Pause animation";
+        marqueeToggle.textContent = paused ? "Play" : "Pause";
+        marqueeToggle.setAttribute("aria-label", paused ? "Play skills animation" : "Pause skills animation");
       });
     }
   }

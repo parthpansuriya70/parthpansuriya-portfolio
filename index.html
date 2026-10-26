@@ -172,9 +172,9 @@
       </div>
     </section>
 
-    <!-- CAPABILITY STRIP -->
-    <section class="strip" aria-label="Core strengths">
-      <div class="container">
+    <!-- MAIN SKILLS: marquee under the hero (the plain list is the fallback and the accessible version) -->
+    <section class="strip" aria-label="Main skills">
+      <div class="container strip-inner">
         <ul class="strip-list">
           <li>Technical &amp; on-page SEO</li>
           <li>Keyword research</li>
@@ -182,6 +182,20 @@
           <li>Google Search Console</li>
           <li>Front-end foundations</li>
         </ul>
+        <div class="strip-marquee" aria-hidden="true">
+          <div class="marquee-row">
+            <div class="marquee-track">
+              <div class="marquee-set">
+                <span class="marquee-item">Technical &amp; on-page SEO</span>
+                <span class="marquee-item">Keyword research</span>
+                <span class="marquee-item">WordPress blog optimisation</span>
+                <span class="marquee-item">Google Search Console</span>
+                <span class="marquee-item">Front-end foundations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn--ghost btn--small marquee-toggle" type="button" aria-label="Pause skills animation">Pause</button>
       </div>
     </section>
 
@@ -273,49 +287,9 @@
         </div>
 
         <div class="skills">
-          <div class="skills-head reveal">
-            <h3 class="skills-title">Skills and tools</h3>
-            <button class="btn btn--ghost btn--small marquee-toggle" type="button">Pause animation</button>
-          </div>
-          <div class="skills-marquee" aria-hidden="true">
-          <div class="marquee-row">
-            <div class="marquee-track">
-              <div class="marquee-set">
-                <span class="marquee-label">SEO</span>
-                <span class="marquee-item">Technical SEO</span>
-                <span class="marquee-item">On-page SEO</span>
-                <span class="marquee-item">Keyword research</span>
-                <span class="marquee-item">Competitor content analysis</span>
-                <span class="marquee-item">Content strategy</span>
-                <span class="marquee-label">Content and CMS</span>
-                <span class="marquee-item">WordPress blog SEO</span>
-                <span class="marquee-item">Content optimisation</span>
-                <span class="marquee-item">Semantic HTML</span>
-                <span class="marquee-label">Social media</span>
-                <span class="marquee-item">Social media content creation</span>
-                <span class="marquee-item">Social media management</span>
-              </div>
-            </div>
-          </div>
-          <div class="marquee-row marquee-row--reverse">
-            <div class="marquee-track">
-              <div class="marquee-set">
-                <span class="marquee-label">Tools</span>
-                <span class="marquee-item">Google Search Console</span>
-                <span class="marquee-item">Figma</span>
-                <span class="marquee-item">Adobe Photoshop</span>
-                <span class="marquee-label">Front-end</span>
-                <span class="marquee-item">HTML5</span>
-                <span class="marquee-item">CSS3</span>
-                <span class="marquee-item">JavaScript</span>
-                <span class="marquee-item">Bootstrap 5</span>
-                <span class="marquee-item">Responsive web design</span>
-              </div>
-            </div>
-          </div>
-          </div>
+          <h3 class="skills-title reveal">Skills and tools</h3>
           <div class="skill-groups">
-            <div class="skill-group">
+            <div class="skill-group reveal">
               <h4>SEO</h4>
               <ul>
                 <li>Technical SEO</li>
@@ -325,7 +299,7 @@
                 <li>Content strategy</li>
               </ul>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
               <h4>Content and CMS</h4>
               <ul>
                 <li>WordPress blog SEO</li>
@@ -333,14 +307,14 @@
                 <li>Semantic HTML</li>
               </ul>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
               <h4>Social media</h4>
               <ul>
                 <li>Social media content creation</li>
                 <li>Social media management</li>
               </ul>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
               <h4>Tools</h4>
               <ul>
                 <li>Google Search Console</li>
@@ -348,7 +322,7 @@
                 <li>Adobe Photoshop</li>
               </ul>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
               <h4>Front-end</h4>
               <ul>
                 <li>HTML5</li>
