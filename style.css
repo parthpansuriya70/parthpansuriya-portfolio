@@ -1245,7 +1245,26 @@ a:hover {
 }
 
 .contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
   margin-top: var(--s-5);
+}
+
+/* Light button for the navy contact panel */
+.btn--light {
+  border-color: var(--navy-text);
+  background: var(--navy-text);
+  color: var(--color-heading);
+}
+
+.btn--light::before {
+  background: var(--color-primary);
+}
+
+.btn--light:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .copy-btn {

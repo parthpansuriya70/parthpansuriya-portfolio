@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/Resume.pdf",
+      "destination": "/Parth_Pansuriya_Resume.pdf",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
