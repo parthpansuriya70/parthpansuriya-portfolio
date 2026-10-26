@@ -108,6 +108,50 @@
     });
   }
 
+  // Skills marquee: clone the set until each half fills the row, then set a steady speed ---
+  var marquee = document.querySelector(".skills-marquee");
+  var marqueeToggle = document.querySelector(".marquee-toggle");
+
+  function buildMarqueeRow(row, speed) {
+    var track = row.querySelector(".marquee-track");
+    var set = track.querySelector(".marquee-set");
+    Array.prototype.forEach.call(track.querySelectorAll("[data-clone]"), function (node) {
+      node.remove();
+    });
+    var width = set.getBoundingClientRect().width;
+    if (!width) return; // hidden (reduced motion or no JS layout)
+    var copies = Math.max(1, Math.ceil(row.clientWidth / width));
+    for (var i = 0; i < copies * 2 - 1; i++) {
+      var clone = set.cloneNode(true);
+      clone.setAttribute("data-clone", "");
+      track.appendChild(clone);
+    }
+    track.style.setProperty("--marquee-dur", (copies * width) / speed + "s");
+  }
+
+  if (marquee) {
+    var rows = Array.prototype.slice.call(marquee.querySelectorAll(".marquee-row"));
+    var speeds = [55, 45];
+    var rebuild = function () {
+      rows.forEach(function (row, index) {
+        buildMarqueeRow(row, speeds[index] || 50);
+      });
+    };
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(rebuild).observe(marquee);
+    } else {
+      rebuild();
+    }
+
+    // A visible control to stop the movement.
+    if (marqueeToggle) {
+      marqueeToggle.addEventListener("click", function () {
+        var paused = marquee.classList.toggle("is-paused");
+        marqueeToggle.textContent = paused ? "Play animation" : "Pause animation";
+      });
+    }
+  }
+
   // Copy email ----------------------------------------------------------
   var copyBtn = document.querySelector(".copy-btn");
   var copyStatus = document.getElementById("copy-status");
