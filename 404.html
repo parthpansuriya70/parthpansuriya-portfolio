@@ -1,76 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Page Not Found | Parth Pansuriya</title>
-  <meta name="description" content="The page you are looking for does not exist." />
-  <meta name="robots" content="noindex, follow" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <link rel="shortcut icon" href="./assets/Parth Pansuriya logo.png" type="image/x-icon">
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | Parth Pansuriya</title>
+  <meta name="description" content="The page you are looking for does not exist.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/assets/Parth_Pansuriya_Favicon.png" type="image/png">
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+
   <style>
-    :root {
-      --bg-primary: #030712;
-      --text-primary: #f3f4f6;
-      --text-secondary: #9ca3af;
-      --accent: #6366f1;
-      --font-headings: "Outfit", sans-serif;
-      --font-body: "Plus Jakarta Sans", sans-serif;
+    @font-face {
+      font-family: "Space Grotesk";
+      src: url("/assets/fonts/space-grotesk-latin-wght.woff2") format("woff2");
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
     }
+    @font-face {
+      font-family: "Inter";
+      src: url("/assets/fonts/inter-latin-wght.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "JetBrains Mono";
+      src: url("/assets/fonts/jetbrains-mono-latin-wght.woff2") format("woff2");
+      font-weight: 100 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --heading: #172a45;
+      --text: #4f5c6d;
+      --primary: #0f4cff;
+      --primary-hover: #0a38d6;
+      --primary-text: #ffffff;
+      --border: #dfe4ee;
+      --focus: #0f4cff;
+      --radius: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1a2e;
+        --heading: #f2f4f8;
+        --text: #b7c1d1;
+        --primary: #5b8cff;
+        --primary-hover: #86a9ff;
+        --primary-text: #0e1a2e;
+        --border: #28385a;
+        --focus: #8fb0ff;
+      }
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 0;
-      font-family: var(--font-body);
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+      min-height: 100dvh;
+      display: grid;
+      place-content: center;
+      padding: 2rem 1.25rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      max-width: 36rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .code {
+      margin: 0 0 1.25rem;
+      font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
     }
     h1 {
-      font-family: var(--font-headings);
-      font-size: clamp(4rem, 10vw, 8rem);
-      margin: 0;
-      background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 50%, #06b6d4 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p {
-      color: var(--text-secondary);
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    a {
-      text-decoration: none;
-      background: var(--accent);
-      color: white;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
+      margin: 0 0 1rem;
+      font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+      font-size: clamp(2.5rem, 1.4rem + 5vw, 4.5rem);
       font-weight: 600;
-      transition: opacity 0.3s ease;
+      letter-spacing: -0.045em;
+      line-height: 1.04;
+      color: var(--heading);
+      text-wrap: balance;
     }
-    a:hover {
-      opacity: 0.9;
+    h1 span { color: var(--primary); }
+    p { margin: 0 0 2rem; font-size: 1.125rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: var(--primary-text);
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
     }
-    a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.4);
-    }
+    .btn:hover { background: var(--primary-hover); }
+    .btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>404</h1>
-  <p>Oops! The page you're looking for doesn't exist.</p>
-  <a href="https://parthpansuriya-portfolio.vercel.app/" title="Go Back Home">Go Back Home</a>
+  <main>
+    <p class="code">Error 404</p>
+    <h1>That page is <span>not here</span>.</h1>
+    <p>The link may be out of date or mistyped. The portfolio home page has everything.</p>
+    <a class="btn" href="/">Back to the portfolio</a>
+  </main>
 </body>
 </html>

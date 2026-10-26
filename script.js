@@ -1,156 +1,162 @@
-// Parth Pansuriya Portfolio - Interactive JavaScript
+// Parth Pansuriya portfolio: small progressive enhancements.
+// The page is fully readable without JavaScript. This adds the mobile menu,
+// the active-section indicator, reveal-on-scroll, copy-email and the footer year.
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize AOS (Animate On Scroll)
-  if (typeof AOS !== "undefined") {
-    AOS.init({
-      duration: 900,
-      once: true,
-      offset: 80,
+(function () {
+  "use strict";
+
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("site-nav");
+  var mobileQuery = window.matchMedia("(max-width: 859px)");
+
+  // Mobile menu ---------------------------------------------------------
+  function setMenu(open, returnFocus) {
+    if (!toggle || !nav) return;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Close" : "Menu";
+    if (open) {
+      nav.setAttribute("data-open", "true");
+    } else {
+      nav.removeAttribute("data-open");
+      if (returnFocus) toggle.focus();
+    }
+  }
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      setMenu(toggle.getAttribute("aria-expanded") !== "true");
     });
-  }
 
-  // Dynamic Copyright Year
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.innerText = new Date().getFullYear();
-  }
-
-  // Contact Form Submission Handler
-  const contactForm = document.getElementById("contactForm");
-  const formAlert = document.getElementById("formAlert");
-
-  if (contactForm && formAlert) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nameInput = document.getElementById("name");
-      const emailInput = document.getElementById("email");
-      const name = nameInput ? nameInput.value.trim() : "there";
-      const email = emailInput ? emailInput.value.trim() : "";
-
-      formAlert.style.display = "block";
-      formAlert.innerHTML = `<i class="fa-solid fa-circle-check me-2" aria-hidden="true"></i> Thank you, <strong>${escapeHtml(
-        name
-      )}</strong>! Your message has been sent. I will get back to you at ${escapeHtml(
-        email
-      )} within 48 hours.`;
-
-      contactForm.reset();
-
-      setTimeout(() => {
-        formAlert.style.display = "none";
-      }, 6000);
+    // Close after choosing a destination.
+    nav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setMenu(false);
     });
-  }
 
-  // Helper to prevent XSS in alert reflection
-  function escapeHtml(str) {
-    const div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  // Glass Navbar, Scroll-to-Top Button & Dynamic Scroll Progress Indicator
-  const nav = document.querySelector(".navbar");
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-  const scrollProgressBar = document.getElementById("scrollProgressBar");
-
-  function onScrollUpdate() {
-    const scrollY = window.scrollY || document.documentElement.scrollTop;
-
-    // Dynamic Scroll Progress Line (0% to 100%)
-    if (scrollProgressBar) {
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = scrollHeight > 0 ? Math.min(Math.max(scrollY / scrollHeight, 0), 1) : 0;
-      scrollProgressBar.style.transform = `scaleX(${progress})`;
-    }
-
-    // Glass Navbar shadow
-    if (nav) {
-      if (scrollY > 50) {
-        nav.classList.add("shadow-lg");
-      } else {
-        nav.classList.remove("shadow-lg");
+    // Escape closes the menu and returns focus to the button.
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setMenu(false, true);
       }
-    }
+    });
 
-    // Scroll to Top Button
-    if (scrollTopBtn) {
-      if (scrollY > 300) {
-        scrollTopBtn.classList.add("show");
-      } else {
-        scrollTopBtn.classList.remove("show");
+    // Tapping outside the header closes the menu.
+    document.addEventListener("click", function (event) {
+      if (toggle.getAttribute("aria-expanded") === "true" && !event.target.closest(".site-header")) {
+        setMenu(false);
       }
-    }
+    });
+
+    // Leaving the mobile layout resets the menu state.
+    var onBreakpoint = function (event) {
+      if (!event.matches) setMenu(false);
+    };
+    if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", onBreakpoint);
+    else mobileQuery.addListener(onBreakpoint);
   }
 
-  let isScrolling = false;
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!isScrolling) {
-        window.requestAnimationFrame(() => {
-          onScrollUpdate();
-          isScrolling = false;
+  // Active section indicator (IntersectionObserver, no scroll listener) --
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav-list a[href^='#']"));
+  var targets = links
+    .map(function (link) {
+      return document.getElementById(link.getAttribute("href").slice(1));
+    })
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && targets.length) {
+    var current = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (link) {
+            if (link.getAttribute("href") === "#" + entry.target.id) {
+              link.setAttribute("aria-current", "true");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
         });
-        isScrolling = true;
-      }
-    },
-    { passive: true }
-  );
-
-  window.addEventListener("resize", onScrollUpdate, { passive: true });
-
-  // Initial calculation on page load
-  onScrollUpdate();
-
-  // Close Navbar on Click (Mobile Devices)
-  const navLinks = document.querySelectorAll(".nav-item .nav-link");
-  const menuToggle = document.getElementById("navmenu");
-
-  if (menuToggle && typeof bootstrap !== "undefined") {
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (menuToggle.classList.contains("show")) {
-          const bsCollapse = bootstrap.Collapse.getInstance(menuToggle) || new bootstrap.Collapse(menuToggle, { toggle: false });
-          bsCollapse.hide();
-        }
-      });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    targets.forEach(function (target) {
+      current.observe(target);
     });
   }
 
-  // Typing Animation Effect
-  const typedTextSpan = document.getElementById("typed-text");
-  if (typedTextSpan) {
-    const textArray = ["SEO & Digital Marketing", "Web Designer"];
-    const typingDelay = 100;
-    const erasingDelay = 50;
-    const newTextDelay = 2000;
-    let textArrayIndex = 0;
-    let charIndex = textArray[0].length;
-
-    function type() {
-      if (charIndex < textArray[textArrayIndex].length) {
-        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(type, typingDelay);
-      } else {
-        setTimeout(erase, newTextDelay);
-      }
-    }
-
-    function erase() {
-      if (charIndex > 0) {
-        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(erase, erasingDelay);
-      } else {
-        textArrayIndex++;
-        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-        setTimeout(type, typingDelay + 900);
-      }
-    }
-
-    setTimeout(erase, newTextDelay + 250);
+  // Reveal on scroll. Content is only hidden when JS has added .js to <html>
+  // (see the inline script in <head>), and never under reduced motion.
+  var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!("IntersectionObserver" in window) || reduce) {
+    reveals.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  } else {
+    var reveal = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            reveal.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+    );
+    reveals.forEach(function (el) {
+      reveal.observe(el);
+    });
   }
-});
+
+  // Copy email ----------------------------------------------------------
+  var copyBtn = document.querySelector(".copy-btn");
+  var copyStatus = document.getElementById("copy-status");
+  if (copyBtn) {
+    var label = copyBtn.textContent;
+    var resetTimer;
+
+    var announce = function (ok) {
+      copyBtn.textContent = ok ? "Copied" : "Copy failed";
+      if (copyStatus) copyStatus.textContent = ok ? "Email address copied to clipboard." : "Could not copy. Select the address above instead.";
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () {
+        copyBtn.textContent = label;
+        if (copyStatus) copyStatus.textContent = "";
+      }, 2200);
+    };
+
+    var legacyCopy = function (text) {
+      var field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.select();
+      var done = false;
+      try {
+        done = document.execCommand("copy");
+      } catch (e) {
+        done = false;
+      }
+      document.body.removeChild(field);
+      return done;
+    };
+
+    copyBtn.addEventListener("click", function () {
+      var text = copyBtn.getAttribute("data-copy");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { announce(true); },
+          function () { announce(legacyCopy(text)); }
+        );
+      } else {
+        announce(legacyCopy(text));
+      }
+    });
+  }
+
+  // Footer year ---------------------------------------------------------
+  var year = document.getElementById("year");
+  if (year) year.textContent = String(new Date().getFullYear());
+})();
